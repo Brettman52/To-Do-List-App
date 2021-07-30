@@ -22,7 +22,6 @@ const AddForm = styled.form `
 `
 export default function AddItem() {
 
-    const taskInput = React.createRef();
 
     const [input, setInputState] = useState();
     const [touched, setTouched] = useState(false);
@@ -59,17 +58,19 @@ export default function AddItem() {
         setTouched(false)
         e.preventDefault();
         dataContext.onAdd({task: input, complete: false})
+        setInputState()
         e.target.reset();
     }
+
     return (
 
         <Wrap>
             <AddForm onSubmit={onSubmit}>
                 <AddBar
-                    ref={taskInput}
+                    
                     onChange={(e) => trackChanges(e.target.value)}
                     placeholder="Add Task"/>
-                <AddButton disabled={error || !input}>
+                <AddButton disabled={!input || error || input.length < 2}>
                     Add
                 </AddButton>
             </AddForm>
