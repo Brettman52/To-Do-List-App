@@ -38,7 +38,7 @@ const ButtonContainer = styled.div `
 
 export default function ListItem(props) {
 
-    const dataContext = useContext(listContext)
+    const {onCheck, onDelete} = useContext(listContext)
     const {item} = props;
 
     return (
@@ -48,11 +48,11 @@ export default function ListItem(props) {
                     {item}
                 </TodoItem>
                 <ButtonContainer>
-                    <CheckButton onClick={() => dataContext.onCheck(item)}>
+                    <CheckButton onClick={() => onCheck(item)}>
                         {!props.complete && "Done"}
                         {props.complete && "Undo"}
                     </CheckButton>
-                    <DeleteButton onClick={()=> dataContext.onDelete(item)}>
+                    <DeleteButton onClick={()=> onDelete(item)}>
                         Delete
                     </DeleteButton>
                 </ButtonContainer>

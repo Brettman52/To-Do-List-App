@@ -15,9 +15,9 @@ function App() {
     const onCheck = (task) => {
         let newList = list.map(singleTask => {
             if (singleTask.task === task) {
-                singleTask.complete = !singleTask.complete
+              singleTask.complete = !singleTask.complete
             }
-            return singleTask
+            return singleTask;
         })
         setList(newList)
     }
